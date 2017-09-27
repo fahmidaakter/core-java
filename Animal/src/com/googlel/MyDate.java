@@ -21,6 +21,7 @@ public class MyDate {
         this.year = year;
     }
 
+
     @Override
     public boolean equals(Object o) {
         boolean result = false;
