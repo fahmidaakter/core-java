@@ -13,9 +13,9 @@ public class CheackedException {
 
     public static void main(String[] args) {
         int sum = 0;
-                String[] a = {"1", "2", "4", "six"};
+                String[] ab = {"1", "2", "4", "six"};
 
-        for (String arg : a) {
+        for (String arg : ab) {
             try {
              
                 sum += Integer.parseInt(arg);
