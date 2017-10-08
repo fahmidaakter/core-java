@@ -14,10 +14,12 @@ public class CustomException extends Exception{
     private String message = null;
 
     public CustomException() {
+        super();
     }
 
     public CustomException(String message) {
         super(message);
+        this.message = message;
     }
 
     public CustomException(String message, Throwable cause) {
