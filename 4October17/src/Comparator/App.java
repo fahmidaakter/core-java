@@ -22,10 +22,12 @@ public class App {
         studentSet.add(new Student("Afrah", "Awal", 123423, 5.00));
         studentSet.add(new Student("Hapy", "Priya", 128466, 4.00));
         Object[] studentArray = studentSet.toArray();
+        
         Student s;
         for (Object obj : studentArray) {
             s = (Student) obj;
-            System.out.println(s.firstName() + " " + s.lastName() + " " + s.studentID() + " " + " GPA: " + s.GPA());
+            System.out.println(s.firstName() + " " + 
+                    s.lastName() + " " + s.studentID() + " " + " GPA: " + s.GPA());
         }
     }
 }
