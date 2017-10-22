@@ -16,7 +16,7 @@ public class TestAssertion {
         Scanner scanner= new Scanner(System.in);
         System.out.println("Enter ur age:"
                 + "");
-        
+
         int value =scanner.nextInt();
         assert value>=18 :"not vaild";
         
