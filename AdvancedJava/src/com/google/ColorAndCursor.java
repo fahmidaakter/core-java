@@ -22,7 +22,7 @@ public class ColorAndCursor {
            Dimension wndSize = thekit.getScreenSize();
            aWindow.setBounds(wndSize.width/4  ,wndSize.height/4, wndSize.width/2, wndSize.height/2);
            aWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-           aWindow.setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
+           aWindow.setCursor(Cursor.getPredefinedCursor(Cursor. DEFAULT_CURSOR ));
            aWindow.getContentPane().setBackground(Color.PINK);
            aWindow.setVisible(true);
            
