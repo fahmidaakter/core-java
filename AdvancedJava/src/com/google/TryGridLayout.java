@@ -27,10 +27,10 @@ public class TryGridLayout {
         content.setLayout(grid);
         EtchedBorder edge = new EtchedBorder(EtchedBorder.RAISED);
         JButton button;
-        for (int i = 1; i <= 10; i++) {
+        /*for (int i = 1; i <= 10; i++) {
             content.add(button = new JButton("Press " + i));
             button.setBorder(edge);
-        }
+        }*/
         aWindow.pack();
         aWindow.setVisible(true);
     }

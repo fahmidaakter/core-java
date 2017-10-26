@@ -5,16 +5,26 @@
  */
 package com.google;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.border.Border;
 
 /**
  *
  * @author J2EE-33
  */
-public class TryBoxLayout {
-
+public class Boxlayout {
+    
     static JFrame aWindow = new JFrame("This is a Box Layout");
 
     public static void main(String[] args) {
@@ -23,19 +33,19 @@ public class TryBoxLayout {
         aWindow.setBounds(wndSize.width / 4, wndSize.height / 4, wndSize.width / 2, wndSize.height / 2);
         aWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Box left = Box.createVerticalBox();
-        left.add(Box.createVerticalStrut(30));
+           left.add(Box.createGlue());
         ButtonGroup radioGroup = new ButtonGroup();
         JRadioButton rbutton;
 
         radioGroup.add(rbutton = new JRadioButton("Red"));
         left.add(rbutton);
-         left.add(Box.createVerticalStrut(30));
+         left.add(Box.createGlue());
         radioGroup.add(rbutton = new JRadioButton("Green"));
         left.add(rbutton);
-         left.add(Box.createVerticalStrut(30));
+           left.add(Box.createGlue());
         radioGroup.add(rbutton = new JRadioButton("Blue"));
         left.add(rbutton);
-         left.add(Box.createVerticalStrut(30));
+           left.add(Box.createGlue());;
         radioGroup.add(rbutton = new JRadioButton("Yellow"));
         left.add(rbutton);
 
@@ -69,9 +79,10 @@ public class TryBoxLayout {
         content.setLayout(new BorderLayout());
         content.add(top, BorderLayout.CENTER);
         content.add(bottomPanel, BorderLayout.SOUTH);
-        
         aWindow.pack();;
         aWindow.setVisible(true);
 
     }
 }
+
+
