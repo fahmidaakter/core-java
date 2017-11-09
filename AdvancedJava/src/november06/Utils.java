@@ -6,17 +6,14 @@
 package november06;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -24,15 +21,8 @@ import javax.swing.table.TableModel;
  */
 public class Utils {
 
-    public static void main(String[] args) throws Exception {
-        List<Students> list = new ArrayList<>();
-        list.add(new Students("Reza", "email", 37, "Male", "Coding", "19", "okkkkkkkkk"));
-        list.add(new Students("Rohul", "email", 27, "Male", "Coding", "33", "okkkkkkkkk"));
 
-        writeTofile("student_infox", list);
-    }
-
-    public static void writeTofile(String filename, List<Students> students) throws Exception {
+    public static void writeTofile(String filename, List<Students> students) {
         File destFile = new File(filename + ".txt");
         try {
             if (destFile.exists() == false) {

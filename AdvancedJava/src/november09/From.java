@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package november06;
+package november09;
 
+import november06.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -19,12 +20,12 @@ import javax.swing.table.TableModel;
  *
  * @author J2EE-33
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class From extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public NewJFrame() {
+    public From() {
         initComponents();
     }
 
@@ -357,26 +358,25 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        String name = "", email = "", age = "0", gender = "",
-                hobby = "", round = "", note = "";
+        String name = "", email = "", age = "", gender = "", hobby = "", round = "", note = "";
         if (txtName.getText().length() < 1) {
             JOptionPane.showMessageDialog(null, "Enter your name");
         } else if (!checkEmailvalidity(txtEmail.getText()) || txtEmail.getText().length() < 1) {
             JOptionPane.showMessageDialog(null, "Enter your vaild Email");
-        } else if (Integer.parseInt(txtAge.getText()) < 18 || Integer.parseInt(txtAge.getText()) > 72) {
-            JOptionPane.showMessageDialog(null, "Enter your Age");
+        } else if (Integer.parseInt(txtAge.getText()) < 18 || Integer.parseInt(txtAge.getText()) > 70) {
+            JOptionPane.showMessageDialog(null, "Enter your age between 18 to 70");
         } else if (buttonGroup1.getSelection().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Select A Gender");
+            JOptionPane.showMessageDialog(null, "Select a gender");
         } else if (!chkReading.isSelected() && !chkWriting.isSelected() && !chkCoding.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Select Hobby");
-        } else if (cmbRound.getItemAt(cmbRound.getSelectedIndex()) == "Select A Round") {
-            JOptionPane.showMessageDialog(null, "Select A round");
+            JOptionPane.showMessageDialog(null, "Select a hobby");
+        } else if (cmbRound.getItemAt(cmbRound.getSelectedIndex()) == "Select a Round") {
+            JOptionPane.showMessageDialog(null, "Select a round");
         } else if (tNote.getText().length() < 5) {
-            JOptionPane.showMessageDialog(null, "Enter Note");
+            JOptionPane.showMessageDialog(null, "Enter note");
         } else {
             name = txtName.getText();
-            age = txtAge.getText();
             email = txtEmail.getText();
+            age = txtAge.getText();
             gender = "";
             if (rMale.isSelected()) {
                 gender = rMale.getText();
@@ -384,45 +384,40 @@ public class NewJFrame extends javax.swing.JFrame {
             if (rFemale.isSelected()) {
                 gender = rFemale.getText();
             }
-
             hobby = "";
             if (chkReading.isSelected()) {
-                hobby += chkReading.getText() + ", ";
+                hobby += chkReading.getText() + ",";
             }
             if (chkWriting.isSelected()) {
-                hobby += chkWriting.getText() + ", ";
+                hobby += chkWriting.getText() + ",";
             }
             if (chkCoding.isSelected()) {
-                hobby += chkCoding.getText() + " ";
-            }
-            round = cmbRound.getItemAt(cmbRound.getSelectedIndex());
-            note = tNote.getText();
+                hobby += chkCoding.getText() + ",";
+                round = cmbRound.getItemAt(cmbRound.getSelectedIndex());
+                note = tNote.getText();
+                Students student = new Students(name, email, gender, hobby, round, note, Integer.parseInt(age));
+                List<Students> s = new ArrayList<>();
+                s.add(student);
+                DefaultTableModel model = (DefaultTableModel) tblDisplay.getModel();
+                Object[] row = new Object[7];
 
-            Students student = new Students(name, email, Integer.parseInt(age), gender, hobby, round, note);
-            List<Students> students = new ArrayList<>();
-            students.add(student);
+                for (int i = 0; i < s.size(); i++) {
+                    row[0] = s.get(i).getName();
+                    row[1] = s.get(i).getEmail();
+                    row[2] = s.get(i).getAge();
+                    row[3] = s.get(i).getGender();
+                    row[4] = s.get(i).getHobby();
+                    row[5] = s.get(i).getRound();
+                    row[6] = s.get(i).getNote();
+                    model.addRow(row);
 
-            DefaultTableModel model = (DefaultTableModel)tblDisplay.getModel();
-            Object[] row = new Object[7];
-
-            for (int i = 0; i < students.size(); i++) {
-                row[0] = students.get(i).getName();
-                row[1] = students.get(i).getEmail();
-                row[2] = students.get(i).getAge();
-                row[3] = students.get(i).getGender();
-                row[4] = students.get(i).getHobby();
-                row[5] = students.get(i).getRound();
-                row[6] = students.get(i).getNote();
-                model.addRow(row);
-               
-                    Utils.writeTofile("students", students);
-               
+                }
+                lblMsg.setText("Successfully Added into Table and Write to File");
 
             }
-
-            lblMsg.setText("Successfully Added into Table and Write to File");
 
         }
+
 
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -509,9 +504,9 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void btnReadfromfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadfromfileActionPerformed
         // TODO add your handling code here:
-        String columns[]={"Name","Email", "Age","Gender", "Hobby", "Round", "Note"};
-        DefaultTableModel tableModel ;
-        tableModel = new DefaultTableModel(0,7);
+        String columns[] = {"Name", "Email", "Age", "Gender", "Hobby", "Round", "Note"};
+        DefaultTableModel tableModel;
+        tableModel = new DefaultTableModel(0, 7);
         tableModel.setColumnIdentifiers(columns);
         tblDisplay.setModel(tableModel);
         Utils.displayStudentsdataFromFile("students", tableModel);
@@ -534,20 +529,21 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(From.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(From.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(From.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(From.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new From().setVisible(true);
             }
         });
     }
