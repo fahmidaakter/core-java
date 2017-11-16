@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    TODO define vocabulary identification
+    PUBLIC ID: -//vendor//vocabulary//EN
+    SYSTEM ID: http://server/path/newXMLDocument.dtd
+
+-->
+
+<!--
+    An example how to use this DTD from your XML document:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE circle SYSTEM "newXMLDocument.dtd">
+
+    <circle>
+    ...
+    </circle>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT circle (radius|position)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT radius (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT position (x-coordinate|y-coordinate)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT x-coordinate (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT y-coordinate (#PCDATA)>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE circle SYSTEM "newXMLDocument.dtd">
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<circle>
+    <radius>15</radius>
+    <position>
+        <x-coordinate>30</x-coordinate>
+        <y-coordinate>50</y-coordinate> 
+    </position>
+</circle>
